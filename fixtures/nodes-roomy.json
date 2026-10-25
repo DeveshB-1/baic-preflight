@@ -1,0 +1,91 @@
+{
+ "items": [
+  {
+   "metadata": {
+    "name": "cp-0",
+    "labels": {}
+   },
+   "spec": {
+    "taints": [
+     {
+      "key": "node-role.kubernetes.io/control-plane",
+      "effect": "NoSchedule"
+     }
+    ]
+   },
+   "status": {
+    "capacity": {
+     "cpu": "2",
+     "memory": "4194304Ki"
+    },
+    "allocatable": {
+     "cpu": "1900m",
+     "memory": "3460300Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.30.2"
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "worker-0",
+    "labels": {}
+   },
+   "spec": {},
+   "status": {
+    "capacity": {
+     "cpu": "8",
+     "memory": "33554432Ki"
+    },
+    "allocatable": {
+     "cpu": "7910m",
+     "memory": "30828134Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.30.2"
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "worker-1",
+    "labels": {}
+   },
+   "spec": {},
+   "status": {
+    "capacity": {
+     "cpu": "8",
+     "memory": "33554432Ki"
+    },
+    "allocatable": {
+     "cpu": "7910m",
+     "memory": "30828134Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.30.2"
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "worker-2",
+    "labels": {}
+   },
+   "spec": {},
+   "status": {
+    "capacity": {
+     "cpu": "8",
+     "memory": "33554432Ki"
+    },
+    "allocatable": {
+     "cpu": "7910m",
+     "memory": "30828134Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.30.2"
+    }
+   }
+  }
+ ]
+}

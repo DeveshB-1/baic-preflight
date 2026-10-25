@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "metadata": {
+    "name": "ip-10-0-1-0",
+    "labels": {}
+   },
+   "spec": {},
+   "status": {
+    "capacity": {
+     "cpu": "4",
+     "memory": "8388608Ki"
+    },
+    "allocatable": {
+     "cpu": "3920m",
+     "memory": "7235174Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.29.6-eks-1552ad0"
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "ip-10-0-1-1",
+    "labels": {}
+   },
+   "spec": {},
+   "status": {
+    "capacity": {
+     "cpu": "4",
+     "memory": "8388608Ki"
+    },
+    "allocatable": {
+     "cpu": "3920m",
+     "memory": "7235174Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.29.6-eks-1552ad0"
+    }
+   }
+  },
+  {
+   "metadata": {
+    "name": "ip-10-0-1-2",
+    "labels": {}
+   },
+   "spec": {},
+   "status": {
+    "capacity": {
+     "cpu": "4",
+     "memory": "8388608Ki"
+    },
+    "allocatable": {
+     "cpu": "3920m",
+     "memory": "7235174Ki"
+    },
+    "nodeInfo": {
+     "kubeletVersion": "v1.29.6-eks-1552ad0"
+    }
+   }
+  }
+ ]
+}

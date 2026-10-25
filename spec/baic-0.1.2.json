@@ -1,0 +1,501 @@
+{
+  "source": "https://raw.githubusercontent.com/uniphore/baic-docs/827cf4da3c665a97ba1414403355df1db5b6f437/index.md",
+  "images": {
+    "forge-backend": "v-6b47a82445",
+    "forge-user-management": "v-b893347668",
+    "forge-scheduler": "v-ae9bf06d0e",
+    "forge-api-gateway": "v-6fc8dcf1b0",
+    "x-forge-ui": "v-67659ecdef",
+    "forge-question-answer": "v-82208cd3df",
+    "evaluation-service": "v-c315fe70e1",
+    "pegasus-inference-api": "v-40c1eb8b43",
+    "guardrails-service": "v-b357c2ce22",
+    "slm-fine-tuning-studio": "v-49c1599d25",
+    "autonomous-entity-label-extraction": "v-b9394104cf",
+    "deep-crawler": "v-06cadfed98",
+    "document-categorizer": "v-b176d49c8e",
+    "xforge-db-migrations": "v-1afaab368b"
+  },
+  "charts": {
+    "uniphore-baic": "0.1.2",
+    "xforge-db": "0.1.0-vd4facb00",
+    "forge-backend": "0.1.0-v283fbf52",
+    "forge-user-management": "0.3.1-v2eb536a6",
+    "forge-scheduler": "0.2.0-v29230c02",
+    "forge-api-gateway": "0.2.0-vd3efeb07",
+    "x-forge-ui": "0.2.0-ve53e19a4",
+    "forge-question-answer": "0.3.0-v9677d889",
+    "evaluation-service": "0.6.0-v4539c0d9",
+    "pegasus-inference-api": "1.4.0-v5eb5ca4a",
+    "guardrails-service": "0.4.0-vdf7c1ace",
+    "slm-fine-tuning-studio": "0.3.0-v53d24b13",
+    "autonomous-entity-label-extraction": "0.3.0-vce9fd5db",
+    "deep-crawler": "0.3.0-v16712cf8",
+    "document-categorizer": "0.3.0-v0aad579d"
+  },
+  "secrets": {
+    "docker-config": {
+      "name": "docker-config",
+      "type": "docker-registry",
+      "section": "Step 1 \u2014 Mirror images and charts into your registry",
+      "keys": [
+        {
+          "name": ".dockerconfigjson",
+          "kind": "required",
+          "value": ""
+        }
+      ]
+    },
+    "xforge-db": {
+      "name": "xforge-db",
+      "type": "generic",
+      "section": "`xforge-db` \u2014 PostgreSQL connection",
+      "keys": [
+        {
+          "name": "host",
+          "kind": "required",
+          "value": "<YOUR-POSTGRES-HOST>"
+        },
+        {
+          "name": "port",
+          "kind": "fixed",
+          "value": "5432"
+        },
+        {
+          "name": "username",
+          "kind": "required",
+          "value": "<YOUR-POSTGRES-USERNAME>"
+        },
+        {
+          "name": "password",
+          "kind": "required",
+          "value": "<YOUR-POSTGRES-PASSWORD>"
+        },
+        {
+          "name": "database",
+          "kind": "fixed",
+          "value": "xforge"
+        }
+      ]
+    },
+    "xforge-redis": {
+      "name": "xforge-redis",
+      "type": "generic",
+      "section": "`xforge-redis` \u2014 Redis connection",
+      "keys": [
+        {
+          "name": "host",
+          "kind": "required",
+          "value": "<YOUR-REDIS-HOST>"
+        },
+        {
+          "name": "endpoint",
+          "kind": "required",
+          "value": "<YOUR-REDIS-HOST>:6380"
+        },
+        {
+          "name": "auth_token",
+          "kind": "required",
+          "value": "<YOUR-REDIS-AUTH-TOKEN>"
+        }
+      ]
+    },
+    "forge-user-management": {
+      "name": "forge-user-management",
+      "type": "generic",
+      "section": "`forge-user-management` \u2014 Auth keys",
+      "keys": [
+        {
+          "name": "APP_CLIENT_ID",
+          "kind": "required",
+          "value": "<UNIPHORE-ISSUED-APP-CLIENT-ID>"
+        },
+        {
+          "name": "APP_CLIENT_SECRET",
+          "kind": "required",
+          "value": "<UNIPHORE-ISSUED-APP-CLIENT-SECRET>"
+        },
+        {
+          "name": "APP_JWT_PRIVATE_KEY",
+          "kind": "required",
+          "value": ""
+        },
+        {
+          "name": "APP_JWT_PUBLIC_KEY",
+          "kind": "required",
+          "value": ""
+        },
+        {
+          "name": "MS_CLIENT_ID",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "MS_CLIENT_SECRET",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "tag-db": {
+      "name": "tag-db",
+      "type": "generic",
+      "section": "`tag-db` \u2014 Forge-tag database (slm-fine-tuning-studio)",
+      "keys": [
+        {
+          "name": "host",
+          "kind": "required",
+          "value": "<YOUR-POSTGRES-HOST>"
+        },
+        {
+          "name": "port",
+          "kind": "fixed",
+          "value": "5432"
+        },
+        {
+          "name": "username",
+          "kind": "required",
+          "value": "<YOUR-POSTGRES-USERNAME>"
+        },
+        {
+          "name": "password",
+          "kind": "required",
+          "value": "<YOUR-POSTGRES-PASSWORD>"
+        },
+        {
+          "name": "database",
+          "kind": "fixed",
+          "value": "forge-tag"
+        },
+        {
+          "name": "jdbc_url",
+          "kind": "required",
+          "value": "jdbc:postgresql://<YOUR-POSTGRES-HOST>:5432/forge-tag"
+        }
+      ]
+    },
+    "miscellaneous": {
+      "name": "miscellaneous",
+      "type": "generic",
+      "section": "`miscellaneous` \u2014 Catch-all integrations",
+      "keys": [
+        {
+          "name": "MASTER_KEY_TOKEN_MGMT",
+          "kind": "required",
+          "value": "<UNIPHORE-ISSUED-MASTER-KEY>"
+        },
+        {
+          "name": "open_api_key",
+          "kind": "optional",
+          "value": "<OPENAI-API-KEY-OR-EMPTY>"
+        },
+        {
+          "name": "ANTHROPIC_API_KEY",
+          "kind": "optional",
+          "value": "<ANTHROPIC-API-KEY-OR-EMPTY>"
+        },
+        {
+          "name": "FIREWORKS_API_KEY",
+          "kind": "optional",
+          "value": "<FIREWORKS-API-KEY-OR-EMPTY>"
+        },
+        {
+          "name": "ASTRA_DB_API_ENDPOINT",
+          "kind": "optional",
+          "value": "<ASTRADB-ENDPOINT-OR-EMPTY>"
+        },
+        {
+          "name": "ASTRA_DB_APPLICATION_TOKEN",
+          "kind": "optional",
+          "value": "<ASTRADB-TOKEN-OR-EMPTY>"
+        },
+        {
+          "name": "LANDING_AI_API_KEY",
+          "kind": "optional",
+          "value": "<LANDINGAI-KEY-OR-EMPTY>"
+        },
+        {
+          "name": "unstructured_key",
+          "kind": "optional",
+          "value": "<UNSTRUCTURED-KEY-OR-EMPTY>"
+        },
+        {
+          "name": "ld_sdk_key",
+          "kind": "optional",
+          "value": "<LAUNCHDARKLY-SERVER-SDK-KEY-OR-EMPTY>"
+        },
+        {
+          "name": "LAUNCH_DARKLY_CLIENT_SIDE_ID",
+          "kind": "optional",
+          "value": "<LAUNCHDARKLY-CLIENT-SIDE-ID-OR-EMPTY>"
+        },
+        {
+          "name": "CENTXFORGE_M2M_CLIENT_ID",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "CENTXFORGE_M2M_CLIENT_SECRET",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "airbyte_s3_bucket_access_key",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "airbyte_s3_bucket_secret_key",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "gcs_credentials_json",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "workato_api_token",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "custom_oas_api_token",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "jwks_url",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "auth_token",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "AUTONOM8_SECRET",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "A8_RUNTIME_SECRET",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "AUTONOM8_API_KEY",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "AUTONOM8_RUNTIME_API_KEY",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "DATABRICKS_VISION_MODEL_URL",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "DATABRICKS_SERVING_URL",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "DATABRICKS_API_KEY",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "REDACTION_LLM_TOKEN",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "GITHUB_TOKEN_ENCRYPTION_KEY",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "agentic_search_bucket",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "oidc-secrets": {
+      "name": "oidc-secrets",
+      "type": "generic",
+      "section": "`oidc-secrets` \u2014 OIDC single sign-on",
+      "keys": [
+        {
+          "name": "OIDC_ISSUER_URI",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "OIDC_CLIENT_ID",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "OIDC_CLIENT_SECRET",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "external-qna-secrets": {
+      "name": "external-qna-secrets",
+      "type": "generic",
+      "section": "`external-qna-secrets` \u2014 External Q&A provider",
+      "keys": [
+        {
+          "name": "EXTERNAL_QNA_TOKEN_URL",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "EXTERNAL_QNA_CLIENT_ID",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "EXTERNAL_QNA_CLIENT_SECRET",
+          "kind": "optional",
+          "value": ""
+        },
+        {
+          "name": "EXTERNAL_QNA_AUDIENCE",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "pegasus-openai-secret": {
+      "name": "pegasus-openai-secret",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "apiKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "pegasus-anthropic-secret": {
+      "name": "pegasus-anthropic-secret",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "apiKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "pegasus-snowflake-secret": {
+      "name": "pegasus-snowflake-secret",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "privateKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "amd-secret": {
+      "name": "amd-secret",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "apiKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "rackspace-secret": {
+      "name": "rackspace-secret",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "apiKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "launchdarkly-uniphore": {
+      "name": "launchdarkly-uniphore",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "sdkKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    },
+    "fireworks-credentials": {
+      "name": "fireworks-credentials",
+      "type": "generic",
+      "section": "LLM provider Secrets (pegasus-inference-api)",
+      "keys": [
+        {
+          "name": "accountId",
+          "kind": "fixed",
+          "value": "uniphore"
+        },
+        {
+          "name": "apiKey",
+          "kind": "optional",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "verify_list": [
+    "docker-config",
+    "xforge-db",
+    "xforge-redis",
+    "forge-user-management",
+    "tag-db",
+    "miscellaneous",
+    "oidc-secrets",
+    "external-qna-secrets",
+    "pegasus-openai-secret",
+    "pegasus-anthropic-secret",
+    "pegasus-snowflake-secret",
+    "amd-secret",
+    "rackspace-secret",
+    "launchdarkly-uniphore",
+    "fireworks-credentials"
+  ],
+  "min_k8s": "1.27",
+  "min_nodes": 3,
+  "min_node_cpu": 4.0,
+  "min_node_mem_gib": 8.0,
+  "min_total_cpu": 12.0,
+  "min_total_mem_gib": 24.0,
+  "footprint_cpu": 12.0,
+  "footprint_mem_gib": 19.0,
+  "min_postgres": "17.4",
+  "min_redis": "7.1.0",
+  "stated": {
+    "images": 14,
+    "charts": 15,
+    "secrets": 15,
+    "services": 13
+  }
+}

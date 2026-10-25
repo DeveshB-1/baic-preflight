@@ -1,0 +1,12 @@
+{
+ "items": [
+  {
+   "metadata": {
+    "name": "gp3",
+    "annotations": {
+     "storageclass.kubernetes.io/is-default-class": "true"
+    }
+   }
+  }
+ ]
+}
